@@ -10,7 +10,7 @@ LK_AGS = '05334'
 LK_POP = 557026
 
 def fetchResults():
-    days = 5
+    days = 30
     date = datetime.datetime.now() - datetime.timedelta(days=days + 7)
     datestr = date.isoformat().split('T')[0]
 
@@ -63,6 +63,9 @@ def daysInARow(column, threshold, method='geq'):
 
 
     for value in rcolumn[::-1]:
+        if value is None:
+            return inARow
+
         constraint_satisfied = False
 
         if method=='geq':
@@ -103,8 +106,8 @@ def index():
     last_history = history[history["date"] >= updates_until.isoformat()]
 
     indicator_hisoty = last_history[last_history['date'] >= indicator_update_until.isoformat()]
-    days_exceeded_lockdown = daysInARow(last_history['weekIncidence'], magic_number_lockdown)
-    days_exceeded_lockdown_light = daysInARow(last_history['weekIncidence'], magic_number_lockdown_light)
+    days_exceeded_lockdown = daysInARow(history['weekIncidence'], magic_number_lockdown)
+    days_exceeded_lockdown_light = daysInARow(history['weekIncidence'], magic_number_lockdown_light)
 
     release_history = last_history[last_history['date'] >= release_update_until.isoformat()]
     days_lockdown_relase = daysInARow(last_history['weekIncidence'], magic_number_lockdown, 'l')

@@ -52,7 +52,7 @@
             <p>Tage in Folge mit Inzidenz höher als {{ magic_number_lockdown }}:</p>
 
             <h3 style="color:  {% if lockdown_light_days == 0 %} darkgreen {% elif lockdown_light_days == 1 %} darkkhaki {% elif lockdown_light_days == 2 %} darkorange {% else %} darkred {% endif %}">
-                {{ lockdown_light_days }}
+                {{ lockdown_light_days }} {% if lockdown_light_days > 30 %} + {% endif %}
             </h3>
         </div>
         <div class="feature col-6 text-center">
@@ -60,7 +60,7 @@
             <p>Tage in Folge mit Inzidenz höher als {{ magic_number_lockdown_extended }}:</p>
 
             <h3 style="color:  {% if lockdown_days == 0 %} darkgreen {% elif lockdown_days == 1 %} darkkhaki {% elif lockdown_days == 2 %} darkorange {% else %} darkred {% endif %}">
-                {{ lockdown_days }}
+                {{ lockdown_days }}{% if lockdown_days > 30 %} + {% endif %}
             </h3>
         </div>
     </div>
