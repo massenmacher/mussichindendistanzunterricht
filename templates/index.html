@@ -103,6 +103,23 @@
     </div>
 </div>
 
+{% if release_lockdown %}
+<div class="container card bg-success text-white my-2">
+    <div class="card-header">
+        Bald dürfen die Schulen wieder in Präsenz/Wechselunterricht (falls lockdown)!
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">
+
+        </h5>
+        <p class="card-text">
+            Die 7-Tage-Inzidenz ist an 5 in Folge unter {{ magic_number_lockdown_extended }}. Daher
+            dürfen ab spätestens <b><u>{{ lockdown_start }}</u></b> die Schulen wieder in den Präsenz/Wechselunterricht.
+        </p>
+    </div>
+</div>
+{% endif %}
+
 <div class="footer my-5">
     <div class="container">
         <span>
